@@ -1,5 +1,5 @@
 var albumPicasso = {
-  name: 'The Colors',
+  title: 'The Colors',
   artist: 'Pablo Picasso',
   label: 'Cubism',
   year: '1881',
@@ -14,7 +14,7 @@ var albumPicasso = {
 };
 
 var albumMarconi = {
-  name: 'The Telephone',
+  title: 'The Telephone',
   artist: 'Guglielmo Marconi',
   label: 'EM',
   year: '1909',
@@ -30,7 +30,7 @@ var albumMarconi = {
 
 // Third Example Album
 var albumDeadmau5 = {
-   name: 'Deadmau5',
+   title: 'Deadmau5',
    artist: 'Joel Zimmerman',
    label: 'Deadmau5 Records',
    year: '2016',
@@ -63,7 +63,7 @@ function setCurrentAlbum (album) {
       albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0],
       albumImage = document.getElementsByClassName('album-cover-art')[0],
       albumSongList = document.getElementsByClassName('album-view-song-list')[0];
-  albumTitle.firstChild.nodeValue = album.name;
+  albumTitle.firstChild.nodeValue = album.title;
   albumArtist.firstChild.nodeValue = album.artist;
   albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
   albumImage.setAttribute('src', album.albumArtUrl);
@@ -110,7 +110,9 @@ function getSongItem (element) {
 }
 
 var currentlyPlayingSong = null;
-function clickHandler (targetElement) {
+
+
+ var clickHandler = function(targetElement) {
   var songItem = getSongItem(targetElement);
   if (currentlyPlayingSong === null) {
     songItem.innerHTML = pauseButtonTemplate;
@@ -162,10 +164,10 @@ window.onload = function() {
       case "The Colors":
         setCurrentAlbum(albumMarconi);
         break;
-      case albumMarconi.name:
+      case albumMarconi.title:
         setCurrentAlbum(albumDeadmau5);
         break;
-      case albumDeadmau5.name:
+      case albumDeadmau5.title:
         setCurrentAlbum(albumPicasso);
         break;
     }
