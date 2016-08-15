@@ -5,11 +5,11 @@ var albumPicasso = {
   year: '1881',
   albumArtUrl: '/assets/images/album_covers/01.png',
   songs: [
-    { name: 'Blue', length: '4:26' },
-    { name: 'Green', length: '3:14' },
-    { name: 'Red', length: '5:01' },
-    { name: 'Pink', length: '3:21'},
-    { name: 'Magenta', length: '2:15'}
+    { name: 'Blue', duration: '4:26' },
+    { name: 'Green', duration: '3:14' },
+    { name: 'Red', duration: '5:01' },
+    { name: 'Pink', duration: '3:21'},
+    { name: 'Magenta', duration: '2:15'}
   ]
 };
 
@@ -20,11 +20,11 @@ var albumMarconi = {
   year: '1909',
   albumArtUrl: 'assets/images/album_covers/20.png',
   songs: [
-    { name: 'Hello, Operator?', length: '1:01' },
-    { name: 'Ring, ring, ring', length: '5:01' },
-    { name: 'Fits in your pocket', length: '3:21'},
-    { name: 'Can you hear me now?', length: '3:14' },
-    { name: 'Wrong phone number', length: '2:15'}
+    { name: 'Hello, Operator?', duration: '1:01' },
+    { name: 'Ring, ring, ring', duration: '5:01' },
+    { name: 'Fits in your pocket', duration: '3:21'},
+    { name: 'Can you hear me now?', duration: '3:14' },
+    { name: 'Wrong phone number', duration: '2:15'}
   ]
  };
 
@@ -36,11 +36,11 @@ var albumDeadmau5 = {
    year: '2016',
    albumArtUrl: 'assets/images/album_covers/cheeseHead.png',
    songs: [
-       { name: 'Strobe', length: '4:56' },
-       { name: 'The Veldt', length: '8:42' },
-       { name: 'Ghost N Stuff', length: '6:11'},
-       { name: 'Raise Your Weapon', length: '8:23' },
-       { name: 'Aural Psynapse', length: '7:30'}
+       { name: 'Strobe', duration: '4:56' },
+       { name: 'The Veldt', duration: '8:42' },
+       { name: 'Ghost N Stuff', duration: '6:11'},
+       { name: 'Raise Your Weapon', duration: '8:23' },
+       { name: 'Aural Psynapse', duration: '7:30'}
    ]
 };
 
@@ -54,26 +54,30 @@ var createSongRow = function(songNumber, songName, songLength){
     + '  <td class="song-item-duration">' + songLength + '</td>'
     + '</tr>'
   ;
-  return template;
+    
+  return $(template);
 };
 
-function setCurrentAlbum (album) {
-  var albumTitle = document.getElementsByClassName('album-view-title')[0],
-      albumArtist = document.getElementsByClassName('album-view-artist')[0],
-      albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0],
-      albumImage = document.getElementsByClassName('album-cover-art')[0],
-      albumSongList = document.getElementsByClassName('album-view-song-list')[0];
-  albumTitle.firstChild.nodeValue = album.title;
-  albumArtist.firstChild.nodeValue = album.artist;
-  albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
-  albumImage.setAttribute('src', album.albumArtUrl);
-  
-  albumSongList.innerHTML = '';
+var setCurrentAlbum = function(album) {
+     var $albumTitle = $('.album-view-title');
+     var $albumArtist = $('.album-view-artist');
+     var $albumReleaseInfo = $('.album-view-release-info');
+     var $albumImage = $('.album-cover-art');
+     var $albumSongList = $('.album-view-song-list');
+    
+    $albumTitle.text(album.title);
+    $albumArtist.text(album.artist);
+    $albumReleaseInfo.text(album.year + ' ' + album.label);
+    $albumImage.attr('src', album.albumArtUrl);
+
+    $albumSongList.empty();
   
   for (var i=0; i< album.songs.length; i++) {
-    albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].name, album.songs[i].length);
+    var $newRow = createSongRow(i + 1, album.songs[i].name, album.songs[i].duration);
+         $albumSongList.append($newRow);
   }
-}
+};
+
 var findParentByClassName = function (element, findClass) {
   var targetParent = undefined;
   while (targetParent === undefined) {
