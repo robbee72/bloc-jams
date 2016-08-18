@@ -6,7 +6,7 @@
    + '    <p>'
    + '      <a class="album-name" href="/album.html"> Deadmau5  </a>'
    + '      <br/>'
-   + '      <a href="/album.html"> Deadmau5 </a>'
+   + '      <a href="/album.html"> The Veldt </a>'
    + '      <br/>'
    + '      Meow songs'
    + '      <br/>'
@@ -24,7 +24,7 @@ $(window).load(function() {
     
         $collectionContainer.empty();
  
-     for (var i = 0; i < 12; i++) {
+     for (var i = 0; i < 8; i++) {
          var $newThumbnail = buildCollectionItemTemplate();
          $collectionContainer.append($newThumbnail);
      }
