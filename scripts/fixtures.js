@@ -35,10 +35,10 @@ var albumDeadmau5 = {
    year: '2016',
    albumArtUrl: 'assets/images/album_covers/cheeseHead.png',
    songs: [
-       { title: 'Strobe', duration: '4:56' },
-       { title: 'The Veldt', duration: '8:42' },
-       { title: 'Ghost N Stuff', duration: '6:11'},
-       { title: 'Raise Your Weapon', duration: '8:23' },
-       { title: 'Aural Psynapse', duration: '7:30'}
+       { title: 'Blue', duration: '4:26', audioUrl: 'assets/music/blue' },
+         { title: 'Green', duration: '3:14', audioUrl: 'assets/music/green' },
+         { title: 'Red', duration: '5:01', audioUrl: 'assets/music/red' },
+         { title: 'Pink', duration: '3:21', audioUrl: 'assets/music/pink' },
+         { title: 'Magenta', duration: '2:15', audioUrl: 'assets/music/magenta' }  
    ]
 };
