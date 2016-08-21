@@ -40,6 +40,6 @@ var albumDeadmau5 = {
          { title: 'Red', duration: 268.45, audioUrl: 'assets/music/red' },
          { title: 'Pink', duration: 153.14, audioUrl: 'assets/music/pink' },
          { title: 'Magenta', duration: 374.22, audioUrl: 'assets/music/magenta' }
-
+ 
    ]
 };
