@@ -1,4 +1,3 @@
-
 var setSong = function(songNumber) {
     if (currentSoundFile) {
         currentSoundFile.stop();
@@ -165,7 +164,6 @@ var setCurrentAlbum = function(album) {
         $albumSongList.append($newRow);
     }
 };
-
 
 var updateSeekBarWhileSongPlays = function() {
     if (currentSoundFile) {
