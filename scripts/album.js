@@ -161,7 +161,7 @@ var setCurrentAlbum = function(album) {
     $albumSongList.empty();
 
     for (i = 0; i < album.songs.length; i++) {
-        var $newRow= createSongRow(i + 1, album.songs[i].title, album.songs[i].length);
+        var $newRow= createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
         $albumSongList.append($newRow);
     }
 };
@@ -250,7 +250,7 @@ var nextSong = function() {
     var currentSongIndex = trackIndex(currentAlbum, currentSongFromAlbum);
     currentSongIndex++;
     
-    if (currentSongIndex >= currentAlbum.songs.length) {
+    if (currentSongIndex >= currentAlbum.songs.duration) {
         currentSongIndex = 0;
     }
     
@@ -309,7 +309,7 @@ var updatePlayerBarSong = function() {
     
     $('.main-controls .play-pause').html(playerBarPauseButton);
     
-    setTotalTimeInPlayerBar(filterTimeCode(currentSongFromAlbum.length));
+    setTotalTimeInPlayerBar(filterTimeCode(currentSongFromAlbum.duration));
 };
 
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
