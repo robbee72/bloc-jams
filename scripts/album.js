@@ -115,7 +115,6 @@ var setCurrentAlbum = function(album) {
     var $newRow = createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
     $albumSongList.append($newRow);
   }
-
 };
 
 var setCurrentTimeInPlayerBar = function(currentTime) {
@@ -161,7 +160,7 @@ var setCurrentAlbum = function(album) {
     $albumSongList.empty();
 
     for (i = 0; i < album.songs.length; i++) {
-        var $newRow= createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
+        var $newRow= createSongRow(i + 1, album.songs[i].title, album.songs[i].length);
         $albumSongList.append($newRow);
     }
 };
@@ -250,7 +249,7 @@ var nextSong = function() {
     var currentSongIndex = trackIndex(currentAlbum, currentSongFromAlbum);
     currentSongIndex++;
     
-    if (currentSongIndex >= currentAlbum.songs.duration) {
+    if (currentSongIndex >= currentAlbum.songs.length) {
         currentSongIndex = 0;
     }
     
@@ -309,7 +308,7 @@ var updatePlayerBarSong = function() {
     
     $('.main-controls .play-pause').html(playerBarPauseButton);
     
-    setTotalTimeInPlayerBar(filterTimeCode(currentSongFromAlbum.duration));
+    setTotalTimeInPlayerBar(filterTimeCode(currentSongFromAlbum.length));
 };
 
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
